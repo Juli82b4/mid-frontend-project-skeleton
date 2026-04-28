@@ -1,0 +1,161 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.input,
+.select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 10px;
+    border-radius: var(--r);
+    outline: none;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.eventCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 14px;
+    transition: 0.15s ease;
+}
+
+.eventCard:hover {
+    transform: translateY(-2px);
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+.title {
+    font-size: 16px;
+    margin: 0 0 6px;
+}
+
+.meta {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 2px 0;
+}
+
+.price {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.soldOut {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--danger);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tab,
+.activeTab {
+    padding: 6px 10px;
+    border-radius: var(--r);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.activeTab {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.detailGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 12px;
+}
+
+.label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity button {
+    background: var(--primary);
+    border: 0;
+    color: var(--text);
+    width: 26px;
+    height: 26px;
+    border-radius: var(--r);
+    cursor: pointer;
+}
+
+.descriptionBox {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 14px;
+}
+
+.description {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.link {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    padding: 0;
+    font-size: 13px;
+}
+
+.notFound {
+    color: var(--muted);
+    text-align: center;
+    margin-top: 40px;
+}

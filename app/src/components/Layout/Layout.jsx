@@ -10,37 +10,41 @@ export default function Layout() {
     <div className={styles.container}>
       <header className={styles.header}>
         <nav className={styles.nav}>
-
           <div className={styles.left}>
             <a
               href="https://www.hackyourfuture.dk/"
               target="_blank"
-              className="link"
+              rel="noreferrer"
+              className={styles.logoLink}
             >
-              <img src={hyfLogo} alt="HackYourFuture logo"
-                className={styles.logo}
-                width={200}
-                style={{ padding: "20px" }}
-              />
+              <img src={hyfLogo} alt="HackYourFuture logo" className={styles.logo} />
             </a>
-
           </div>
-          {/* Navigation links go here — e.g. link to event list, cart, login */}
+
           <div className={styles.center}>
-            <Link to="/events" className={styles.login}>
+            <Link to="/events" className={styles.link}>
               Events
             </Link>
           </div>
+
           <div className={styles.right}>
-            {user && (
+            {user ? (
               <>
-                <span>{user.email}</span>
-                <button onClick={logout} className={styles.button}>Sign out</button>
+                <span className={styles.user}>{user.email}</span>
+                <button onClick={logout} className={styles.button}>
+                  Sign out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className={styles.link}>
+                  Login
+                </Link>
+                <Link to="/register" className={styles.link}>
+                  Register
+                </Link>
               </>
             )}
-
-            <Link to="/login" className={styles.login}>Login</Link>
-            <Link to="/register" className={styles.register}>Register</Link>
           </div>
         </nav>
       </header>

@@ -2,73 +2,69 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #0f172a;
-  color: #e5e7eb;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .header {
-  background: #111827;
-  border-bottom: 1px solid #1f2937;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .nav {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 12px 20px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .left,
 .center,
 .right {
-  flex: 1;
   display: flex;
   align-items: center;
-}
-
-.center {
-  justify-content: center;
-}
-
-.right {
-  justify-content: flex-end;
   gap: 12px;
 }
 
+.center {
+  flex: 1;
+  justify-content: center;
+}
+
 .logo {
-  max-height: 50px;
-  width: auto;
+  height: 28px;
 }
 
-.nav a {
+.link {
+  color: var(--text);
+  opacity: 0.8;
   text-decoration: none;
-  color: #e5e7eb;
-  padding: 6px 10px;
+  font-size: 14px;
 }
 
-.nav a:hover {
-  color: #93c5fd;
+.link:hover {
+  opacity: 1;
 }
 
-.register {
-  border: 1px solid #374151;
-  padding: 6px 10px;
-  border-radius: 6px;
+.user {
+  font-size: 13px;
+  color: var(--muted);
 }
 
 .button {
-  background: none;
-  border: 1px solid #374151;
-  color: #e5e7eb;
-  padding: 6px 10px;
-  border-radius: 6px;
+  background: var(--primary);
+  border: 0;
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: var(--r);
   cursor: pointer;
+  font-size: 13px;
 }
 
 .button:hover {
-  border-color: #93c5fd;
-  color: #93c5fd;
+  opacity: 0.9;
 }
 
 .main {
@@ -76,30 +72,13 @@
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 24px;
 }
 
 .footer {
-  padding: 20px;
+  border-top: 1px solid var(--border);
+  padding: 16px;
   text-align: center;
-  border-top: 1px solid #1f2937;
-  color: #9ca3af;
-}
-
-@media (max-width: 768px) {
-  .nav {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .left,
-  .center,
-  .right {
-    flex: 100%;
-    justify-content: center;
-  }
-
-  .right {
-    flex-direction: column;
-  }
+  color: var(--muted);
+  font-size: 12px;
 }
