@@ -1,5 +1,6 @@
 import events from "../../data/events.js";
 import EventCard from "./EventCard";
+import styles from "./Event.module.css";
 
 // TODO: split each event below into its own EventCard component
 // TODO: add a "Buy ticket" button to each event card
@@ -9,7 +10,7 @@ export default function EventList() {
   return (
     <ul>
       {events.map((event) => (
-        <EventCard key={event.id} event={event}/>
+        <EventCard key={event.id} event={event} />
       ))}
     </ul>
   );
