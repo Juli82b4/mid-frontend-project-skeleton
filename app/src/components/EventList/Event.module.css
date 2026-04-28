@@ -1,8 +1,8 @@
 .container {
     background: white;
-    padding: 16px;
-    border-radius: 8px;
     border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 16px;
 }
 
 .title {
@@ -17,18 +17,14 @@
 }
 
 .label {
+    font-size: 12px;
     font-weight: bold;
     color: #222;
 }
 
-.description {
-    margin-top: 6px;
-    color: #444;
-    line-height: 1.4;
-}
-
 .price {
     font-weight: bold;
+    color: #2f80ed;
     margin-top: 6px;
 }
 
@@ -36,6 +32,12 @@
     color: red;
     font-weight: bold;
     margin-top: 6px;
+}
+
+.description {
+    margin-top: 6px;
+    color: #444;
+    line-height: 1.5;
 }
 
 .notFound {
@@ -47,12 +49,43 @@
 .eventCard {
     background: white;
     border: 1px solid #eee;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 12px;
+    transition: 0.2s;
+}
+
+.eventCard:hover {
+    transform: translateY(-2px);
+    border-color: #ddd;
 }
 
 .link {
     text-decoration: none;
     color: inherit;
     display: block;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.detailGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.box {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.descriptionBox {
+    margin-top: 16px;
 }

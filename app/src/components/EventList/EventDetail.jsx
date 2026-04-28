@@ -13,26 +13,51 @@ export default function EventDetail() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>{event.title}</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>{event.name}</h1>
+        <p className={styles.price}>
+          {event.price === 0 ? "Free" : `€${event.price}`}
+        </p>
+      </div>
 
-      <p className={styles.meta}>
-        <span className={styles.label}>Date:</span> {event.date}
-      </p>
+      <div className={styles.detailGrid}>
+        <div className={styles.box}>
+          <p className={styles.label}>Date</p>
+          <p className={styles.meta}>{event.date}</p>
+        </div>
 
-      <p className={styles.meta}>
-        <span className={styles.label}>Time:</span> {event.time}
-      </p>
+        <div className={styles.box}>
+          <p className={styles.label}>Time</p>
+          <p className={styles.meta}>{event.time}</p>
+        </div>
 
-      <p className={styles.meta}>
-        <span className={styles.label}>Venue:</span> {event.venue}
-      </p>
+        <div className={styles.box}>
+          <p className={styles.label}>Venue</p>
+          <p className={styles.meta}>{event.venue}</p>
+        </div>
 
-      <p className={styles.meta}>
-        <span className={styles.label}>City:</span> {event.city}
-      </p>
+        <div className={styles.box}>
+          <p className={styles.label}>City</p>
+          <p className={styles.meta}>{event.city}</p>
+        </div>
 
-      <div>
-        <p className={styles.label}>Description:</p>
+        <div className={styles.box}>
+          <p className={styles.label}>Category</p>
+          <p className={styles.meta}>{event.category}</p>
+        </div>
+
+        <div className={styles.box}>
+          <p className={styles.label}>Tickets</p>
+          <p className={styles.meta}>
+            {event.ticketsAvailable === 0
+              ? "Sold out"
+              : `${event.ticketsAvailable} available`}
+          </p>
+        </div>
+      </div>
+
+      <div className={styles.descriptionBox}>
+        <p className={styles.label}>Description</p>
         <p className={styles.description}>{event.description}</p>
       </div>
     </div>
