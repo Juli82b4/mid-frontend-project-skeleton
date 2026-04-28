@@ -1,5 +1,3 @@
-// Hardcoded mock events for development before switching to fetch.
-// Shape should match the API: GET /events
 const events = [
   {
     id: 1,
@@ -9,7 +7,7 @@ const events = [
     venue: "Copenhagen Concert Hall",
     city: "Copenhagen",
     description:
-      "The largest React conference in Scandinavia. Two tracks covering the latest in React 19, Server Components, and the evolving frontend ecosystem. Keynotes from core React team members and community leaders.",
+      "The largest React conference in Scandinavia. Two tracks covering React 19, Server Components, and modern frontend architecture.",
     price: 149,
     ticketsAvailable: 0,
     totalTickets: 800,
@@ -23,7 +21,7 @@ const events = [
     venue: "BLOX",
     city: "Copenhagen",
     description:
-      "A 24-hour hackathon where teams of 2–4 build something real using AI APIs. Cash prizes, free food, and mentoring from engineers at leading AI companies. All skill levels welcome.",
+      "24-hour hackathon focused on building AI-powered apps. Teams, mentors, and prizes included.",
     price: 0,
     ticketsAvailable: 60,
     totalTickets: 150,
@@ -31,16 +29,87 @@ const events = [
   },
   {
     id: 3,
-    name: "JavaScript: Modern Patterns Workshop",
+    name: "JavaScript Modern Patterns Workshop",
     date: "2026-05-03",
     time: "10:00",
     venue: "Founders House",
     city: "Copenhagen",
     description:
-      "A hands-on full-day workshop covering modern JavaScript patterns: closures, async/await, Promises, modules, and functional techniques. Bring your laptop. Small group, individual coaching included.",
+      "Deep dive into modern JS patterns, async flows, modules, and functional design.",
     price: 79,
     ticketsAvailable: 12,
     totalTickets: 30,
+    category: "Workshop",
+  },
+
+  {
+    id: 4,
+    name: "Vue.js Meetup Night",
+    date: "2026-05-10",
+    time: "18:30",
+    venue: "IT University of Copenhagen",
+    city: "Copenhagen",
+    description:
+      "Community meetup with talks on Vue 3, composition API, and real-world case studies.",
+    price: 0,
+    ticketsAvailable: 40,
+    totalTickets: 100,
+    category: "Meetup",
+  },
+  {
+    id: 5,
+    name: "Startup Pitch Night",
+    date: "2026-05-18",
+    time: "17:00",
+    venue: "Republikken",
+    city: "Copenhagen",
+    description:
+      "Startups pitch to investors in a live event. Networking and drinks included.",
+    price: 20,
+    ticketsAvailable: 5,
+    totalTickets: 120,
+    category: "Business",
+  },
+  {
+    id: 6,
+    name: "Frontend Mastery Bootcamp",
+    date: "2026-06-02",
+    time: "09:30",
+    venue: "Code Academy Aarhus",
+    city: "Aarhus",
+    description:
+      "Intensive bootcamp covering React, CSS architecture, performance, and testing.",
+    price: 299,
+    ticketsAvailable: 25,
+    totalTickets: 50,
+    category: "Bootcamp",
+  },
+  {
+    id: 7,
+    name: "Tech & Coffee Morning Talk",
+    date: "2026-06-08",
+    time: "08:30",
+    venue: "Kaffebar Aarhus",
+    city: "Aarhus",
+    description:
+      "Casual morning tech talk with coffee and networking. Topic: AI in frontend development.",
+    price: 5,
+    ticketsAvailable: 80,
+    totalTickets: 100,
+    category: "Talk",
+  },
+  {
+    id: 8,
+    name: "UX Design Sprint Workshop",
+    date: "2026-06-15",
+    time: "10:00",
+    venue: "Design School Kolding",
+    city: "Kolding",
+    description:
+      "Learn and practice UX design sprint methodology in a 1-day intensive session.",
+    price: 120,
+    ticketsAvailable: 0,
+    totalTickets: 40,
     category: "Workshop",
   },
 ];

@@ -1,3 +1,24 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.input,
+.select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 10px;
+    border-radius: var(--r);
+    outline: none;
+}
+
 .list {
     list-style: none;
     padding: 0;
@@ -6,30 +27,45 @@
     gap: 12px;
 }
 
-.container {
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    padding: 16px;
-}
-
 .eventCard {
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    padding: 12px;
-    transition: 0.2s;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 14px;
+    transition: 0.15s ease;
 }
 
 .eventCard:hover {
     transform: translateY(-2px);
-    border-color: #ddd;
 }
 
 .link {
+    color: inherit;
     text-decoration: none;
-    color: #2f80ed;
     display: block;
+}
+
+.title {
+    font-size: 16px;
+    margin: 0 0 6px;
+}
+
+.meta {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 2px 0;
+}
+
+.price {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.soldOut {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--danger);
 }
 
 .header {
@@ -39,126 +75,87 @@
     margin-bottom: 16px;
 }
 
-.title {
-    font-size: 20px;
-    margin-bottom: 8px;
-    color: #111;
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
-.meta {
-    font-size: 14px;
-    color: #666;
-    margin: 3px 0;
+.tab,
+.activeTab {
+    padding: 6px 10px;
+    border-radius: var(--r);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
 }
 
-.label {
-    font-size: 12px;
-    font-weight: 600;
-    color: #333;
-}
-
-.price {
-    font-weight: 600;
-    color: #2f80ed;
-}
-
-.soldOut {
-    color: #d93025;
-    font-weight: 600;
-    margin-top: 6px;
+.activeTab {
+    background: var(--primary);
+    border-color: var(--primary);
 }
 
 .detailGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    margin-top: 12px;
 }
 
 .box {
-    background: #f9f9f9;
-    padding: 10px;
-    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 12px;
 }
 
-.descriptionBox {
-    margin-top: 16px;
-}
-
-.description {
-    margin-top: 6px;
-    color: #444;
-    line-height: 1.5;
-}
-
-.notFound {
-    text-align: center;
-    color: #d93025;
-    margin-top: 20px;
-}
-
-.tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
-}
-
-.tab {
-    padding: 6px 10px;
-    border: 1px solid #eee;
-    background: white;
-    color: #333;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.activeTab {
-    padding: 6px 10px;
-    border: 1px solid #2f80ed;
-    background: #2f80ed;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
+.label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
 }
 
 .quantity {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 6px;
 }
 
 .quantity button {
-    padding: 4px 10px;
-    border: 1px solid #ddd;
-    background: white;
+    background: var(--primary);
+    border: 0;
+    color: var(--text);
+    width: 26px;
+    height: 26px;
+    border-radius: var(--r);
     cursor: pointer;
-    border-radius: 4px;
 }
 
-.controls {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
+.descriptionBox {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 14px;
 }
 
-.input {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #eee;
-    border-radius: 6px;
+.description {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
 }
 
-.select {
-    padding: 8px;
-    border: 1px solid #eee;
-    border-radius: 6px;
-}
-
-.list {
-    list-style: none;
+.link {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
     padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 12px;
+    font-size: 13px;
+}
+
+.notFound {
+    color: var(--muted);
+    text-align: center;
+    margin-top: 40px;
 }
