@@ -1,19 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import events from "../../data/events.js";
 import styles from "./Event.module.css";
 
 export default function EventDetail() {
   const { id } = useParams();
-  const event = events.find((e) => String(e.id) === id);
 
   const [quantity, setQuantity] = useState(1);
   const [tab, setTab] = useState("info");
   const [showMore, setShowMore] = useState(false);
 
-  if (!event) {
-    return <p className={styles.notFound}>Event not found</p>;
-  }
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchEvent() {
+      try {
+
+        setLoading(true);
+        setError(null);
+
+        const res = await fetch(`http://localhost:3001/api/events/${id}`);
+        if (!res.ok) throw new Error("Event not found");
+
+        const data = await res.json();
+        setEvent(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchEvent();
+  }, [id]);
+
+ //Week 3 states- loading/error states
+  if (loading) return <p>Loading event details...</p>;
+  if (error) return <p>Something went wrong: {error}</p>;
+  if (!event) { return <p className={styles.notFound}>Event not found</p>; }
 
   return (
     <div className={styles.container}>
@@ -76,7 +101,7 @@ export default function EventDetail() {
                 }
               >
                 +
-              </button>            </div>
+              </button></div>
           </div>
         </div>
       )}
