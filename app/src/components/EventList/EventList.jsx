@@ -9,7 +9,12 @@ export default function EventList() {
 
   const filteredEvents = events
     .filter((event) =>
+      //week 2 - seach bar options
       event.name.toLowerCase().includes(filter.toLowerCase())
+      ||
+      event.city.toLowerCase().includes(filter.toLowerCase())
+      ||
+       (filter.toLowerCase() === "free" ? event.price === 0 : false)
     )
     .sort((a, b) => {
       if (sortBy === "price") return a.price - b.price;
@@ -37,7 +42,7 @@ export default function EventList() {
           <option value="name">Sort by name</option>
         </select>
       </div>
-
+     {/* week 2 -  wired up event card using .map*/}
       {filteredEvents.length === 0 ? (
         <p>No events found</p>
       ) : (
