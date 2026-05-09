@@ -38,11 +38,15 @@ export default function EventList() {
         </select>
       </div>
 
-      <ul className={styles.list}>
-        {filteredEvents.map((event) => (
-          <EventCard key={event.id} event={event} />
-        ))}
-      </ul>
+      {filteredEvents.length === 0 ? (
+        <p>No events found</p>
+      ) : (
+        <ul className={styles.list}>
+          {filteredEvents.map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

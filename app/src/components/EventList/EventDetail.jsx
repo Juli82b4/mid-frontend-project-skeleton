@@ -70,8 +70,13 @@ export default function EventDetail() {
                 -
               </button>
               <span>{quantity}</span>
-              <button onClick={() => setQuantity((q) => q + 1)}>+</button>
-            </div>
+              <button
+                onClick={() =>
+                  setQuantity((q) => Math.min(event.ticketsAvailable, q + 1))
+                }
+              >
+                +
+              </button>            </div>
           </div>
         </div>
       )}
