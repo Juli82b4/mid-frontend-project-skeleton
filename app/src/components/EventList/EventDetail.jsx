@@ -5,7 +5,7 @@ import styles from "./Event.module.css";
 export default function EventDetail() {
   const { id } = useParams();
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [tab, setTab] = useState("info");
   const [showMore, setShowMore] = useState(false);
 
@@ -35,7 +35,7 @@ export default function EventDetail() {
     fetchEvent();
   }, [id]);
 
- //Week 3 states- loading/error states
+  //Week 3 states- loading/error states
   if (loading) return <p>Loading event details...</p>;
   if (error) return <p>Something went wrong: {error}</p>;
   if (!event) { return <p className={styles.notFound}>Event not found</p>; }
@@ -90,18 +90,25 @@ export default function EventDetail() {
           <div className={styles.box}>
             <p className={styles.label}>Tickets</p>
 
-            <div className={styles.quantity}>
-              <button onClick={() => setQuantity((q) => Math.max(1, q - 1))}>
-                -
-              </button>
-              <span>{quantity}</span>
-              <button
-                onClick={() =>
-                  setQuantity((q) => Math.min(event.ticketsAvailable, q + 1))
-                }
-              >
-                +
-              </button></div>
+            {event.ticketsAvailable === 0 ? (
+              <p className={styles.meta}>Sold out</p>
+            ) : (
+              <div className={styles.quantity}>
+                <button onClick={() => setQuantity((q) => Math.max(0, q - 1))}>
+                  -
+                </button>
+
+                <span>{quantity}</span>
+
+                <button
+                  onClick={() =>
+                    setQuantity((q) => Math.min(event.ticketsAvailable, q + 1))
+                  }
+                >
+                  +
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

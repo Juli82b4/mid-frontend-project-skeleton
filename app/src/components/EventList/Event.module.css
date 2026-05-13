@@ -48,6 +48,7 @@
 .title {
     font-size: 16px;
     margin: 0 0 6px;
+    color: white;
 }
 
 .meta {
@@ -160,3 +161,36 @@
     margin-top: 40px;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 12px;
+}
+
+.pageBtn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: var(--r);
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.pageBtn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.pageBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pageInfo {
+    font-size: 14px;
+    color: var(--muted);
+}
