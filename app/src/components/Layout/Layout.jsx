@@ -1,11 +1,12 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import hyfLogo from "../../assets/hyf.svg";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { useCart } from "../../context/CartContext";
 import styles from "./Layout.module.css";
-import { useNavigate } from "react-router-dom";
 
 export default function Layout() {
   const { user, logout } = useAuth();
+  const { cart } = useCart();
   const navigate = useNavigate();
 
   return (
@@ -19,7 +20,11 @@ export default function Layout() {
               rel="noreferrer"
               className={styles.logoLink}
             >
-              <img src={hyfLogo} alt="HackYourFuture logo" className={styles.logo} />
+              <img
+                src={hyfLogo}
+                alt="HackYourFuture logo"
+                className={styles.logo}
+              />
             </a>
           </div>
 
@@ -27,12 +32,17 @@ export default function Layout() {
             <Link to="/events" className={styles.link}>
               Events
             </Link>
+
+            <Link to="/cart" className={styles.link}>
+              Cart ({cart.length})
+            </Link>
           </div>
 
           <div className={styles.right}>
             {user ? (
               <>
                 <span className={styles.user}>{user.email}</span>
+
                 <button
                   onClick={() => {
                     logout();
