@@ -1,16 +1,23 @@
-// Feel free to replace the content of this component with your own
+import styles from "./HomePage.module.css";
+import bannerImage from "../../assets/banner.webp";
+
 function HomePage() {
   return (
-    <div
-      style={{
-        padding: "20px",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      Welcome to the homepage!
+    <div className={styles.container}>
+      <img
+        src={bannerImage}
+        alt="Events banner"
+        className={styles.banner}
+      />
+
+      <div className={styles.content}>
+        <h1 className={styles.title}>Welcome to EventHub</h1>
+
+        <p className={styles.text}>
+          Discover amazing events, concerts, and experiences near you.
+          Browse events, add tickets to your cart, and book instantly.
+        </p>
+      </div>
     </div>
   );
 }

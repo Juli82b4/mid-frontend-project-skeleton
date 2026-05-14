@@ -1,13 +1,16 @@
 import { useCart } from "../../context/CartContext";
 import styles from "./Event.module.css";
+import { FaShoppingCart, FaTrash } from "react-icons/fa";
 
 export default function Cart() {
-    const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
+    const { cart, removeFromCart, updateQuantity } = useCart();
 
+    //total
     const total = cart.reduce((sum, item) => {
         return sum + item.price * item.quantity;
     }, 0);
 
+    //emptycart
     if (cart.length === 0) {
         return (
             <div className={styles.container}>
@@ -23,18 +26,12 @@ export default function Cart() {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Cart</h1>
-
             <div className={styles.list}>
                 {cart.map((item) => (
                     <div key={item.id} className={styles.eventCard}>
-                        <div>
-                            <h3 className={styles.title}>{item.name}</h3>
-                            <p className={styles.meta}>€{item.price}</p>
-                            <p className={styles.meta}>
-                                Subtotal: €{(item.price * item.quantity).toFixed(2)}
-                            </p>
-                        </div>
+                        <h3 className={styles.title}>{item.name}</h3>
+
+                        <p className={styles.meta}>€{item.price}</p>
 
                         <div className={styles.quantity}>
                             <button
@@ -45,7 +42,7 @@ export default function Cart() {
                                 -
                             </button>
 
-                            <span className={styles.meta}>{item.quantity}</span>
+                            <span>{item.quantity}</span>
 
                             <button
                                 onClick={() =>
@@ -54,29 +51,21 @@ export default function Cart() {
                             >
                                 +
                             </button>
-
-                            <button
-                                onClick={() => removeFromCart(item.id)}
-                                className={styles.soldOut}
-                            >
-                                Remove
-                            </button>
                         </div>
+
+                        <button
+                            onClick={() => removeFromCart(item.id)}
+                            className={styles.removeBtn}
+                        >
+                            <FaTrash />
+                            Remove
+                        </button>
                     </div>
                 ))}
             </div>
 
             <div className={styles.descriptionBox}>
-                <h2 className={styles.title}>
-                    Total: €{total.toFixed(2)}
-                </h2>
-
-                <button
-                    onClick={clearCart}
-                    className={styles.addToCart}
-                >
-                    Clear Cart
-                </button>
+                <h2>Total: €{total.toFixed(2)}</h2>
             </div>
         </div>
     );

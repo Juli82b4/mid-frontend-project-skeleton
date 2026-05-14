@@ -9,6 +9,8 @@ import EventDetail from "./components/EventList/EventDetail.jsx";
 import Cart from "./components/EventList/Cart.jsx";
 import Login from "./components/Login/Login.jsx";
 import Register from "./components/Register/Register.jsx";
+import Orders from "./components/Orders/Orders.jsx";
+import CheckOut from "./components/CheckOut/CheckOut.jsx"
 
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext";
@@ -24,10 +26,13 @@ const router = createBrowserRouter([
       { path: "events", element: <EventList /> },
       { path: "events/:id", element: <EventDetail /> },
       { path: "cart", element: <Cart /> },
-    ],
+      { path: "checkout", element: <CheckOut /> },
+      { path: "orders", element: <Orders /> },
+    ]
   },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
+  { path: "checkout", element: <CheckOut /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

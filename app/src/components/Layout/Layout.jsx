@@ -3,6 +3,7 @@ import hyfLogo from "../../assets/hyf.svg";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useCart } from "../../context/CartContext";
 import styles from "./Layout.module.css";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function Layout() {
   const { user, logout } = useAuth();
@@ -29,11 +30,17 @@ export default function Layout() {
           </div>
 
           <div className={styles.center}>
+
+            <Link to="/" className={styles.link}>
+              Home
+            </Link>
+
             <Link to="/events" className={styles.link}>
               Events
             </Link>
 
             <Link to="/cart" className={styles.link}>
+              <FaShoppingCart className={styles.icon} />
               Cart ({cart.length})
             </Link>
           </div>
@@ -42,6 +49,10 @@ export default function Layout() {
             {user ? (
               <>
                 <span className={styles.user}>{user.email}</span>
+
+                <Link to="/orders" className={styles.link}>
+                  Orders
+                </Link>
 
                 <button
                   onClick={() => {

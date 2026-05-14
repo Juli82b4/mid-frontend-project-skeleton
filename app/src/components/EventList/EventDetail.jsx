@@ -52,19 +52,14 @@ export default function EventDetail() {
       </div>
 
       <div className={styles.tabs}>
-        <button
-          onClick={() => setTab("info")}
-          className={tab === "info" ? styles.activeTab : styles.tab}
-        >
-          Info
-        </button>
 
         <button
-          onClick={() => setTab("description")}
-          className={tab === "description" ? styles.activeTab : styles.tab}
-        >
-          Description
-        </button>
+          onClick={() => setTab("info")}
+          className={tab === "info" ? styles.activeTab : styles.tab}>Info</button>
+
+        <button onClick={() => setTab("description")}
+          className={tab === "description" ? styles.activeTab : styles.tab}>Description </button>
+
       </div>
 
       {tab === "info" && (
@@ -97,34 +92,17 @@ export default function EventDetail() {
             ) : (
               <>
                 <div className={styles.quantity}>
-                  <button
-                    onClick={() =>
-                      setQuantity((q) => Math.max(0, q - 1))
-                    }
-                  >
-                    -
-                  </button>
+                  <button onClick={() => setQuantity((q) => Math.max(0, q - 1))}> - </button>
 
                   <span>{quantity}</span>
 
-                  <button
-                    onClick={() =>
-                      setQuantity((q) =>
-                        Math.min(event.ticketsAvailable, q + 1)
-                      )
-                    }
-                  >
-                    +
-                  </button>
+                  <button onClick={() => setQuantity((q) => Math.min(event.ticketsAvailable, q + 1))}> + </button>
                 </div>
 
                 <button
                   onClick={() => addToCart(event, quantity)}
                   disabled={quantity === 0}
-                  className={styles.addToCart}
-                >
-                  Add to cart
-                </button>
+                  className={styles.addToCart}>Add to cart</button>
               </>
             )}
           </div>

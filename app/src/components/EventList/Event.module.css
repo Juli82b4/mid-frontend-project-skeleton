@@ -1,6 +1,7 @@
 .container {
     max-width: 900px;
     margin: 0 auto;
+    padding: 24px;
 }
 
 .controls {
@@ -219,4 +220,38 @@
     color: var(--muted);
     text-align: center;
     margin-top: 40px;
+}
+
+.removeBtn {
+    padding: 8px 12px;
+    margin-top: 15px;
+    background: rgba(239, 68, 68, 0.15);
+    color: #ff6b6b;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s ease;
+}
+
+.removeBtn:hover {
+    background: rgba(203, 76, 76, 0.25);
+    transform: translateY(-1px);
+}
+
+/*checkout page*/
+.container {
+    padding: 20px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.message {
+    font-size: 16px;
+    color: #555;
 }
