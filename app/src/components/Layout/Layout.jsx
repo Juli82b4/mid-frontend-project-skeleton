@@ -2,7 +2,6 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import hyfLogo from "../../assets/hyf.svg";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useCart } from "../../context/CartContext";
-import styles from "./Layout.module.css";
 import { FaShoppingCart } from "react-icons/fa";
 
 export default function Layout() {
@@ -11,78 +10,100 @@ export default function Layout() {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <nav className={styles.nav}>
-          <div className={styles.left}>
-            <a
-              href="https://www.hackyourfuture.dk/"
-              target="_blank"
-              rel="noreferrer"
-              className={styles.logoLink}
-            >
-              <img
-                src={hyfLogo}
-                alt="HackYourFuture logo"
-                className={styles.logo}
-              />
-            </a>
-          </div>
+    <div className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
 
-          <div className={styles.center}>
+      <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
 
-            <Link to="/" className={styles.link}>
+          <Link
+            to="/"
+            className="flex items-center gap-2 font-bold text-lg"
+          >
+            <img src={hyfLogo} alt="logo" className="h-8 w-auto" />
+            <span>EventHub</span>
+          </Link>
+
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+            <Link to="/" className="hover:text-black text-gray-600">
               Home
             </Link>
 
-            <Link to="/events" className={styles.link}>
+            <Link to="/events" className="hover:text-black text-gray-600">
               Events
             </Link>
 
-            <Link to="/cart" className={styles.link}>
-              <FaShoppingCart className={styles.icon} />
-              Cart ({cart.length})
+            <Link to="/about" className="hover:text-black text-gray-600">
+              About
             </Link>
-          </div>
+          </nav>
 
-          <div className={styles.right}>
+          <div className="flex items-center gap-4">
+
+            <Link
+              to="/cart"
+              className="relative flex items-center gap-2 text-gray-700 hover:text-black"
+            >
+              <FaShoppingCart />
+              <span className="hidden sm:inline">Cart</span>
+
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
+                  {cart.length}
+                </span>
+              )}
+            </Link>
+
             {user ? (
               <>
-                <span className={styles.user}>{user.email}</span>
-
-                <Link to="/orders" className={styles.link}>
+                <Link
+                  to="/orders"
+                  className="hidden sm:block text-sm text-gray-600 hover:text-black"
+                >
                   Orders
                 </Link>
+
+                <span className="hidden lg:block text-sm text-gray-500">
+                  {user.email}
+                </span>
 
                 <button
                   onClick={() => {
                     logout();
                     navigate("/");
                   }}
-                  className={styles.button}
+                  className="bg-black text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-800 transition"
                 >
                   Sign out
                 </button>
               </>
             ) : (
               <>
-                <Link to="/login" className={styles.link}>
+                <Link
+                  to="/login"
+                  className="text-sm text-gray-600 hover:text-black"
+                >
                   Login
                 </Link>
-                <Link to="/register" className={styles.link}>
+
+                <Link
+                  to="/register"
+                  className="bg-black text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-800 transition"
+                >
                   Register
                 </Link>
               </>
             )}
           </div>
-        </nav>
+        </div>
       </header>
 
-      <main className={styles.main}>
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-6">
         <Outlet />
       </main>
 
-      <footer className={styles.footer}></footer>
+      <footer className="border-t bg-white text-center py-4 text-xs text-gray-500">
+        © {new Date().getFullYear()} EventHub — Buy tickets, experience life
+      </footer>
     </div>
   );
 }

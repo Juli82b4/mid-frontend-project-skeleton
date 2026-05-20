@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
-import styles from "./Event.module.css";
 
 export default function EventDetail() {
   const { id } = useParams();
@@ -21,7 +20,10 @@ export default function EventDetail() {
         setLoading(true);
         setError(null);
 
-        const res = await fetch(`http://localhost:3001/api/events/${id}`);
+        const res = await fetch(
+          `http://localhost:3001/api/events/${id}`
+        );
+
         if (!res.ok) throw new Error("Event not found");
 
         const data = await res.json();
@@ -36,73 +38,131 @@ export default function EventDetail() {
     fetchEvent();
   }, [id]);
 
-  if (loading) return <p>Loading event details...</p>;
-  if (error) return <p>Something went wrong: {error}</p>;
-  if (!event) {
-    return <p className={styles.notFound}>Event not found</p>;
+  if (loading) {
+    return (
+      <div className="text-center py-10 text-gray-500">
+        Loading event details...
+      </div>
+    );
   }
 
+  if (error) {
+    return (
+      <div className="text-center py-10 text-red-500">
+        Something went wrong: {error}
+      </div>
+    );
+  }
+
+  if (!event) {
+    return (
+      <div className="text-center py-10 text-gray-500">
+        Event not found
+      </div>
+    );
+  }
+
+  const soldOut = event.ticketsAvailable === 0;
+
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>{event.name}</h1>
-        <p className={styles.price}>
+    <div className="max-w-4xl mx-auto px-4 py-8">
+
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+          {event.name}
+        </h1>
+
+        <p className="text-xl font-semibold text-gray-900">
           {event.price === 0 ? "Free" : `€${event.price}`}
         </p>
       </div>
 
-      <div className={styles.tabs}>
-
+      <div className="flex gap-4 border-b mb-6">
         <button
           onClick={() => setTab("info")}
-          className={tab === "info" ? styles.activeTab : styles.tab}>Info</button>
+          className={`pb-2 text-sm font-medium ${tab === "info"
+              ? "border-b-2 border-black text-black"
+              : "text-gray-500"
+            }`}
+        >
+          Info
+        </button>
 
-        <button onClick={() => setTab("description")}
-          className={tab === "description" ? styles.activeTab : styles.tab}>Description </button>
-
+        <button
+          onClick={() => setTab("description")}
+          className={`pb-2 text-sm font-medium ${tab === "description"
+              ? "border-b-2 border-black text-black"
+              : "text-gray-500"
+            }`}
+        >
+          Description
+        </button>
       </div>
 
       {tab === "info" && (
-        <div className={styles.detailGrid}>
-          <div className={styles.box}>
-            <p className={styles.label}>Date</p>
-            <p className={styles.meta}>{event.date}</p>
+        <div className="grid md:grid-cols-2 gap-4">
+
+          <div className="p-4 border rounded-lg">
+            <p className="text-xs text-gray-500">Date</p>
+            <p className="text-gray-900">{event.date}</p>
           </div>
 
-          <div className={styles.box}>
-            <p className={styles.label}>Time</p>
-            <p className={styles.meta}>{event.time}</p>
+          <div className="p-4 border rounded-lg">
+            <p className="text-xs text-gray-500">Time</p>
+            <p className="text-gray-900">{event.time}</p>
           </div>
 
-          <div className={styles.box}>
-            <p className={styles.label}>Venue</p>
-            <p className={styles.meta}>{event.venue}</p>
+          <div className="p-4 border rounded-lg">
+            <p className="text-xs text-gray-500">Venue</p>
+            <p className="text-gray-900">{event.venue}</p>
           </div>
 
-          <div className={styles.box}>
-            <p className={styles.label}>City</p>
-            <p className={styles.meta}>{event.city}</p>
+          <div className="p-4 border rounded-lg">
+            <p className="text-xs text-gray-500">City</p>
+            <p className="text-gray-900">{event.city}</p>
           </div>
 
-          <div className={styles.box}>
-            <p className={styles.label}>Tickets</p>
+          <div className="p-4 border rounded-lg md:col-span-2">
+            <p className="text-xs text-gray-500 mb-2">Tickets</p>
 
-            {event.ticketsAvailable === 0 ? (
-              <p className={styles.meta}>Sold out</p>
+            {soldOut ? (
+              <p className="text-red-500 font-medium">Sold out</p>
             ) : (
               <>
-                <div className={styles.quantity}>
-                  <button onClick={() => setQuantity((q) => Math.max(0, q - 1))}> - </button>
+                <div className="flex items-center gap-4 mb-3">
 
-                  <span>{quantity}</span>
+                  <button
+                    onClick={() =>
+                      setQuantity((q) => Math.max(0, q - 1))
+                    }
+                    className="px-3 py-1 border rounded-lg"
+                  >
+                    -
+                  </button>
 
-                  <button onClick={() => setQuantity((q) => Math.min(event.ticketsAvailable, q + 1))}> + </button>
+                  <span className="text-lg font-medium">
+                    {quantity}
+                  </span>
+
+                  <button
+                    onClick={() =>
+                      setQuantity((q) =>
+                        Math.min(event.ticketsAvailable, q + 1)
+                      )
+                    }
+                    className="px-3 py-1 border rounded-lg"
+                  >
+                    +
+                  </button>
                 </div>
 
                 <button
                   onClick={() => addToCart(event, quantity)}
                   disabled={quantity === 0}
-                  className={styles.addToCart}>Add to cart</button>
+                  className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 disabled:opacity-50"
+                >
+                  Add to cart
+                </button>
               </>
             )}
           </div>
@@ -110,10 +170,12 @@ export default function EventDetail() {
       )}
 
       {tab === "description" && (
-        <div className={styles.descriptionBox}>
-          <p className={styles.label}>Description</p>
+        <div className="p-4 border rounded-lg">
+          <p className="text-sm text-gray-500 mb-2">
+            Description
+          </p>
 
-          <p className={styles.description}>
+          <p className="text-gray-700 leading-relaxed">
             {showMore
               ? event.description
               : event.description.slice(0, 120) + "..."}
@@ -121,7 +183,7 @@ export default function EventDetail() {
 
           <button
             onClick={() => setShowMore(!showMore)}
-            className={styles.link}
+            className="mt-3 text-sm text-black underline"
           >
             {showMore ? "Show less" : "Show more"}
           </button>
