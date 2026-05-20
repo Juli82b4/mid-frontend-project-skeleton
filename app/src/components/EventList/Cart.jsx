@@ -1,6 +1,7 @@
 import { useCart } from "../../context/CartContext";
 import styles from "./Event.module.css";
 import { FaShoppingCart, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
     const { cart, removeFromCart, updateQuantity } = useCart();
@@ -66,6 +67,10 @@ export default function Cart() {
 
             <div className={styles.descriptionBox}>
                 <h2>Total: €{total.toFixed(2)}</h2>
+
+                <Link to="/checkout">
+                    Go to Checkout
+                </Link>
             </div>
         </div>
     );
