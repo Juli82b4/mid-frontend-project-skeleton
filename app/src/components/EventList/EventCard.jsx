@@ -16,7 +16,7 @@ export default function EventCard({ event }) {
                 </p>
 
                 <p className={styles.meta}>{event.category}</p>
-               
+
                 <p className={styles.price}>
                     {event.price === 0 ? "Free" : `€${event.price}`}
                 </p>

@@ -85,19 +85,24 @@ export default function EventList() {
       )}
 
       {/* week 3- pagination*/}
-      <div>
-        <button onClick={() => setPage((p) => Math.max(p - 1, 1))}>
+      <div className={styles.pagination}>
+        <button
+          className={styles.pageBtn}
+          onClick={() => setPage((p) => Math.max(p - 1, 1))}
+        >
           Prev
         </button>
 
-        <span> Page {page} </span>
+        <span className={styles.pageInfo}>Page {page}</span>
 
-        <button onClick={() => setPage((p) => p + 1)}>
+        <button
+          className={styles.pageBtn}
+          onClick={() => setPage((p) => p + 1)}
+        >
           Next
         </button>
-
       </div>
-       </div>
+    </div>
   );
 }
 

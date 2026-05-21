@@ -1,6 +1,7 @@
 .container {
     max-width: 900px;
     margin: 0 auto;
+    padding: 24px;
 }
 
 .controls {
@@ -48,6 +49,7 @@
 .title {
     font-size: 16px;
     margin: 0 0 6px;
+    color: white;
 }
 
 .meta {
@@ -154,9 +156,102 @@
     font-size: 13px;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 12px;
+}
+
+.pageBtn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: var(--r);
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.pageBtn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.pageBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pageInfo {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.addToCart {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: var(--r);
+    background: var(--primary);
+    color: var(--text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.addToCart:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.addToCart:disabled {
+    background: var(--border);
+    color: var(--muted);
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.6;
+}
+
 .notFound {
     color: var(--muted);
     text-align: center;
     margin-top: 40px;
 }
 
+.removeBtn {
+    padding: 8px 12px;
+    margin-top: 15px;
+    background: rgba(239, 68, 68, 0.15);
+    color: #ff6b6b;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s ease;
+}
+
+.removeBtn:hover {
+    background: rgba(203, 76, 76, 0.25);
+    transform: translateY(-1px);
+}
+
+/*checkout page*/
+.container {
+    padding: 20px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.message {
+    font-size: 16px;
+    color: #555;
+}

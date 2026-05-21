@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 import styles from "./Event.module.css";
 
 export default function EventDetail() {
   const { id } = useParams();
+  const { addToCart } = useCart();
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [tab, setTab] = useState("info");
   const [showMore, setShowMore] = useState(false);
 
@@ -16,7 +18,6 @@ export default function EventDetail() {
   useEffect(() => {
     async function fetchEvent() {
       try {
-
         setLoading(true);
         setError(null);
 
@@ -35,10 +36,11 @@ export default function EventDetail() {
     fetchEvent();
   }, [id]);
 
- //Week 3 states- loading/error states
   if (loading) return <p>Loading event details...</p>;
   if (error) return <p>Something went wrong: {error}</p>;
-  if (!event) { return <p className={styles.notFound}>Event not found</p>; }
+  if (!event) {
+    return <p className={styles.notFound}>Event not found</p>;
+  }
 
   return (
     <div className={styles.container}>
@@ -50,19 +52,14 @@ export default function EventDetail() {
       </div>
 
       <div className={styles.tabs}>
-        <button
-          onClick={() => setTab("info")}
-          className={tab === "info" ? styles.activeTab : styles.tab}
-        >
-          Info
-        </button>
 
         <button
-          onClick={() => setTab("description")}
-          className={tab === "description" ? styles.activeTab : styles.tab}
-        >
-          Description
-        </button>
+          onClick={() => setTab("info")}
+          className={tab === "info" ? styles.activeTab : styles.tab}>Info</button>
+
+        <button onClick={() => setTab("description")}
+          className={tab === "description" ? styles.activeTab : styles.tab}>Description </button>
+
       </div>
 
       {tab === "info" && (
@@ -90,18 +87,24 @@ export default function EventDetail() {
           <div className={styles.box}>
             <p className={styles.label}>Tickets</p>
 
-            <div className={styles.quantity}>
-              <button onClick={() => setQuantity((q) => Math.max(1, q - 1))}>
-                -
-              </button>
-              <span>{quantity}</span>
-              <button
-                onClick={() =>
-                  setQuantity((q) => Math.min(event.ticketsAvailable, q + 1))
-                }
-              >
-                +
-              </button></div>
+            {event.ticketsAvailable === 0 ? (
+              <p className={styles.meta}>Sold out</p>
+            ) : (
+              <>
+                <div className={styles.quantity}>
+                  <button onClick={() => setQuantity((q) => Math.max(0, q - 1))}> - </button>
+
+                  <span>{quantity}</span>
+
+                  <button onClick={() => setQuantity((q) => Math.min(event.ticketsAvailable, q + 1))}> + </button>
+                </div>
+
+                <button
+                  onClick={() => addToCart(event, quantity)}
+                  disabled={quantity === 0}
+                  className={styles.addToCart}>Add to cart</button>
+              </>
+            )}
           </div>
         </div>
       )}
