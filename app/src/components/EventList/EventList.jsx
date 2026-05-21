@@ -1,16 +1,57 @@
+import { useState } from "react";
 import events from "../../data/events.js";
 import EventCard from "./EventCard";
-
-// TODO: split each event below into its own EventCard component
-// TODO: add a "Buy ticket" button to each event card
-// TODO: replace the mock data import with a fetch call to GET /events
+import styles from "./Event.module.css";
 
 export default function EventList() {
+  const [sortBy, setSortBy] = useState("date");
+  const [filter, setFilter] = useState("");
+
+  const filteredEvents = events
+    .filter((event) =>
+      //week 2 - seach bar options
+      event.name.toLowerCase().includes(filter.toLowerCase())
+      ||
+      event.city.toLowerCase().includes(filter.toLowerCase())
+      ||
+       (filter.toLowerCase() === "free" ? event.price === 0 : false)
+    )
+    .sort((a, b) => {
+      if (sortBy === "price") return a.price - b.price;
+      if (sortBy === "name") return a.name.localeCompare(b.name);
+      return new Date(a.date) - new Date(b.date);
+    });
+
   return (
-    <ul>
-      {events.map((event) => (
-        <EventCard key={event.id} event={event}/>
-      ))}
-    </ul>
+    <div>
+      <div className={styles.controls}>
+        <input
+          className={styles.input}
+          placeholder="Search events..."
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        />
+
+        <select
+          className={styles.select}
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
+          <option value="date">Sort by date</option>
+          <option value="price">Sort by price</option>
+          <option value="name">Sort by name</option>
+        </select>
+      </div>
+     {/* week 2 -  wired up event card using .map*/}
+      {filteredEvents.length === 0 ? (
+        <p>No events found</p>
+      ) : (
+        <ul className={styles.list}>
+          {filteredEvents.map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
