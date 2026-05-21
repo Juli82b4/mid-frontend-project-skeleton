@@ -27,12 +27,13 @@ const routeGuards = jsonServer.rewriter({
   "/api/users*": "/600/users$1",
 });
 
-app.use(routeGuards);
+
 app.use((req, res, next) => {
   console.log("Request received:", req.method, req.url);
   next();
 });
 app.use(middlewares);
+app.use(routeGuards);
 app.use(auth);
 app.use(router);
 

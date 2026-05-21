@@ -2,9 +2,11 @@ import { Link, Outlet } from "react-router-dom";
 import hyfLogo from "../../assets/hyf.svg";
 import { useAuth } from "../../context/AuthContext.jsx";
 import styles from "./Layout.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Layout() {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.container}>
@@ -31,7 +33,13 @@ export default function Layout() {
             {user ? (
               <>
                 <span className={styles.user}>{user.email}</span>
-                <button onClick={logout} className={styles.button}>
+                <button
+                  onClick={() => {
+                    logout();
+                    navigate("/");
+                  }}
+                  className={styles.button}
+                >
                   Sign out
                 </button>
               </>

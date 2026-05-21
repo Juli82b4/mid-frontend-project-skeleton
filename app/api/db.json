@@ -1,5 +1,26 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "juli@gmail.com",
+      "password": "$2a$10$ZhCyIJ1IXvXKq9vsAQbmx.4/fB/dVFGyv8k4C3vmrtafL7zIZ2GXe",
+      "id": 1
+    },
+    {
+      "email": "jj@gmail.com",
+      "password": "$2a$10$scz/Hbsfd9Kl63XZS5ykvedZTxEBlbSItmitP91z5tm2Wy3dcOpSq",
+      "id": 2
+    },
+    {
+      "email": "ss@gmail.com",
+      "password": "$2a$10$zYHyJN3TfwSbvUN6NNzD/uNvP02QDaHgSVhm739e.p4BiNNeCEraK",
+      "id": 3
+    },
+    {
+      "email": "mmm@gmail.com",
+      "password": "$2a$10$UeM49QbZ3HzyEKnyo/6lc.wtULqpPU35/WTldEpndCIs13aWu11mq",
+      "id": 4
+    }
+  ],
   "events": [
     {
       "id": 1,

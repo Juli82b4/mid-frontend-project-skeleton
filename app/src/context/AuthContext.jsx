@@ -29,16 +29,40 @@ export function AuthProvider({ children }) {
   }
 
   async function register(email, password) {
+    //week 3
     // TODO: POST to api("/register") with { email, password }
     // TODO: if the response is not ok, throw an error
     // TODO: destructure { accessToken, user } from the response JSON
     // TODO: call `persist` with accessToken and user to save the session
+    const response = await fetch(api("/register"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const text = await response.text();
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      throw new Error("Server returned invalid response");
+    }
+
+    if (!response.ok) {
+      throw new Error(data || "Registration failed");
+    }
+
+    persist(data.accessToken, data.user);
   }
 
   function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    // TODO add the missing logout logic here — clear the token and user from state as well
+
+    setToken(null);
+    setUser(null);
+    // TODO add the missing logout logic here — clear the token and user from state as well- week 3
   }
 
   function persist(accessToken, user) {
