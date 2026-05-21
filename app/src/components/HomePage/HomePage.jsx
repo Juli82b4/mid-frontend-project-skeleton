@@ -17,16 +17,12 @@ function HomePage() {
           <h1 className="text-white text-3xl md:text-5xl font-bold">
             Discover Amazing Events
           </h1>
-
-          <p className="text-gray-200 mt-3 max-w-xl text-sm md:text-base">
-            Concerts, tech talks, sports, and unforgettable experiences — all in one place.
-          </p>
         </div>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-12 text-center">
 
-        <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">
+        <h2 className="text-2xl md:text-3xl font-semibold text-gray-500">
           Welcome to EventHub
         </h2>
 

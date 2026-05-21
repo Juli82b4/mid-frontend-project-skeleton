@@ -4,7 +4,7 @@ export default function About() {
     return (
         <div className="max-w-3xl mx-auto px-4 py-10">
 
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-gray-300 mb-2">
                 About EventHub
             </h1>
 
@@ -12,7 +12,7 @@ export default function About() {
                 A simple app for finding and booking events.
             </p>
 
-            <div className="bg-white border rounded-xl p-6 space-y-5">
+            <div className="bg-blue-100 border rounded-xl p-6 space-y-5">
 
                 <p className="text-gray-700 leading-relaxed">
                     EventHub is a small project built to practice building an event booking app.
@@ -47,7 +47,7 @@ export default function About() {
 
                     <Link
                         to="/register"
-                        className="border px-4 py-2 rounded-lg hover:bg-gray-100"
+                        className="border px-4 py-2 rounded-lg bg-yellow-600"
                     >
                         Create account
                     </Link>

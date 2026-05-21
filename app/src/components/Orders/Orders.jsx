@@ -56,7 +56,7 @@ export default function Orders() {
         {orders.map((order) => (
           <div
             key={order.id}
-            className="border rounded-xl bg-white p-5"
+            className="border rounded-xl bg-blue-200 p-5"
           >
 
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
@@ -93,8 +93,8 @@ export default function Orders() {
             </div>
 
             <div className="flex justify-between border-t pt-3">
-              <span className="font-semibold">Total</span>
-              <span className="font-bold">
+              <span className="font-semibold  text-slate-900">Total</span>
+              <span className="font-bold text-slate-900">
                 €{order.total}
               </span>
             </div>

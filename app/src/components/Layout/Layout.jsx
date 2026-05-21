@@ -10,29 +10,30 @@ export default function Layout() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
+    <div className="min-h-screen flex flex-col bg-slate-950 text-white">
 
-      <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
+      <header className="bg-slate-900 border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
 
           <Link
             to="/"
             className="flex items-center gap-2 font-bold text-lg"
           >
-            <img src={hyfLogo} alt="logo" className="h-8 w-auto" />
-            <span>EventHub</span>
+            <span className="font-logo text-2xl">
+              EventHub
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <Link to="/" className="hover:text-black text-gray-600">
+            <Link to="/" className="hover:text-white text-gray-600">
               Home
             </Link>
 
-            <Link to="/events" className="hover:text-black text-gray-600">
+            <Link to="/events" className="hover:text-white text-gray-600">
               Events
             </Link>
 
-            <Link to="/about" className="hover:text-black text-gray-600">
+            <Link to="/about" className="hover:text-white text-gray-600">
               About
             </Link>
           </nav>
@@ -41,7 +42,7 @@ export default function Layout() {
 
             <Link
               to="/cart"
-              className="relative flex items-center gap-2 text-gray-700 hover:text-black"
+              className="relative flex items-center gap-2 text-gray-700 hover:text-white"
             >
               <FaShoppingCart />
               <span className="hidden sm:inline">Cart</span>
@@ -57,7 +58,7 @@ export default function Layout() {
               <>
                 <Link
                   to="/orders"
-                  className="hidden sm:block text-sm text-gray-600 hover:text-black"
+                  className="hidden sm:block text-sm text-gray-600 hover:text-white"
                 >
                   Orders
                 </Link>
@@ -80,14 +81,14 @@ export default function Layout() {
               <>
                 <Link
                   to="/login"
-                  className="text-sm text-gray-600 hover:text-black"
+                  className="text-sm text-gray-600 hover:text-white"
                 >
                   Login
                 </Link>
 
                 <Link
                   to="/register"
-                  className="bg-black text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-800 transition"
+                  className="bg-black text-white px-4 py-2 rounded-lg text-sm hover: bg-yellow-600 transition"
                 >
                   Register
                 </Link>
@@ -101,7 +102,8 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer className="border-t bg-white text-center py-4 text-xs text-gray-500">
+
+      <footer className="border-t text-center py-4 text-xs text-gray-500 bg-slate-900 border-b border-slate-800">
         © {new Date().getFullYear()} EventHub — Buy tickets, experience life
       </footer>
     </div>

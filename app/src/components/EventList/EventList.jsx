@@ -36,22 +36,6 @@ export default function EventList() {
     fetchEvents();
   }, [page]);
 
-  if (loading) {
-    return (
-      <div className="text-center py-10 text-gray-500">
-        Loading events...
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="text-center py-10 text-red-500">
-        Error: {error}
-      </div>
-    );
-  }
-
   const filteredEvents = events
     .filter((event) => {
       const q = filter.toLowerCase();
@@ -68,20 +52,37 @@ export default function EventList() {
       return new Date(a.date) - new Date(b.date);
     });
 
+  if (loading) {
+    return (
+      <div className="text-center py-10 text-gray-400">
+        Loading events...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-10 text-red-400">
+        {error}
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
 
-      <div className="flex flex-col md:flex-row gap-3 md:items-center justify-between mb-6">
+
+      <div className="bg-slate-900 border border-slate-800 rounded-lg p-4 mb-6 flex flex-col md:flex-row gap-3 md:items-center justify-between">
 
         <input
-          className="w-full md:w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-          placeholder="Search events (name, city, or 'free')"
+          className="w-full md:w-1/2 px-4 py-2 rounded bg-slate-950 border border-slate-800 text-white placeholder-gray-500 focus:outline-none"
+          placeholder="Search events..."
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         />
 
         <select
-          className="w-full md:w-48 px-4 py-2 border rounded-lg bg-white"
+          className="w-full md:w-48 px-4 py-2 rounded bg-slate-950 border border-slate-800 text-white"
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
         >
@@ -91,8 +92,9 @@ export default function EventList() {
         </select>
       </div>
 
+
       {filteredEvents.length === 0 ? (
-        <div className="text-center text-gray-500 py-10">
+        <div className="text-center text-gray-400 py-10">
           No events found
         </div>
       ) : (
@@ -103,27 +105,29 @@ export default function EventList() {
         </ul>
       )}
 
-      <div className="flex items-center justify-center gap-4 mt-8">
+
+      <div className="flex items-center justify-center gap-4 mt-8 text-sm">
 
         <button
           onClick={() => setPage((p) => Math.max(p - 1, 1))}
-          className="px-4 py-2 border rounded-lg hover:bg-gray-100 disabled:opacity-50"
           disabled={page === 1}
+          className="px-4 py-2 rounded bg-slate-900 border border-slate-800 text-white disabled:opacity-40"
         >
           Prev
         </button>
 
-        <span className="text-sm text-gray-600">
+        <span className="text-gray-400">
           Page {page}
         </span>
 
         <button
           onClick={() => setPage((p) => p + 1)}
-          className="px-4 py-2 border rounded-lg hover:bg-gray-100"
+          className="px-4 py-2 rounded bg-slate-900 border border-slate-800 text-white"
         >
           Next
         </button>
       </div>
+
     </div>
   );
 }

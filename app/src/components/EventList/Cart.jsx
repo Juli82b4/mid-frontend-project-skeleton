@@ -11,19 +11,17 @@ export default function Cart() {
 
     if (cart.length === 0) {
         return (
-            <div className="max-w-2xl mx-auto px-4 py-12 text-center">
-                <div className="border rounded-xl p-8 bg-white">
-                    <h2 className="text-xl font-semibold mb-2">
-                        Your cart is empty
-                    </h2>
+            <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">
+                <div className="w-full max-w-md text-center border border-slate-800 rounded-xl p-8 bg-slate-900 text-white">
+                    <h2 className="font-semibold mb-2">Your cart is empty</h2>
 
-                    <p className="text-gray-500 mb-6">
+                    <p className="text-gray-400 mb-6">
                         Add events to your cart to see them here.
                     </p>
 
                     <Link
                         to="/events"
-                        className="inline-block bg-black text-white px-5 py-2 rounded-lg hover:bg-gray-800"
+                        className="inline-block bg-white text-black px-5 py- rounded-lg hover:bg-gray-200"
                     >
                         Browse Events
                     </Link>
@@ -33,35 +31,33 @@ export default function Cart() {
     }
 
     return (
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="min-h-screen flex justify-center bg-slate-950 px-4 py-10">
 
-            <div className="space-y-4">
+            <div className="w-full max-w-3xl space-y-4">
 
                 {cart.map((item) => (
                     <div
                         key={item.id}
-                        className="bg-white border rounded-xl p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+                        className="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-white"
                     >
 
                         <div>
-                            <h3 className="text-lg font-semibold text-gray-900">
-                                {item.name}
-                            </h3>
-
-                            <p className="text-gray-500">€{item.price}</p>
+                            <h3 className="text-gray-300 font-semibold">{item.name}</h3>
+                            <p className="text-gray-400">€{item.price}</p>
                         </div>
 
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2 bg-slate-950 border border-slate-800 rounded-lg px-2 py-1">
+
                             <button
                                 onClick={() =>
                                     updateQuantity(item.id, item.quantity - 1)
                                 }
-                                className="px-3 py-1 border rounded-lg"
+                                className="w-8 h-8 flex items-center justify-center rounded bg-slate-800 hover:bg-slate-700"
                             >
                                 -
                             </button>
 
-                            <span className="text-lg font-medium">
+                            <span className="w-6 text-center font-medium text-gray-400">
                                 {item.quantity}
                             </span>
 
@@ -69,36 +65,40 @@ export default function Cart() {
                                 onClick={() =>
                                     updateQuantity(item.id, item.quantity + 1)
                                 }
-                                className="px-3 py-1 border rounded-lg"
+                                className="w-8 h-8 flex items-center justify-center rounded bg-slate-800 hover:bg-slate-700"
                             >
                                 +
                             </button>
+
                         </div>
 
                         <button
                             onClick={() => removeFromCart(item.id)}
-                            className="flex items-center gap-2 text-red-500 hover:text-red-700 text-sm"
+                            className="flex items-center gap-2 text-red-400 hover:text-red-300 text-sm"
                         >
                             <FaTrash />
                             Remove
                         </button>
+
                     </div>
                 ))}
-            </div>
 
-            <div className="mt-8 border rounded-xl p-6 bg-white">
+                <div className="border border-slate-800 rounded-xl p-6 bg-slate-900 text-white">
 
-                <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-semibold">Total</h2>
-                    <p className="text-xl font-bold">€{total.toFixed(2)}</p>
+                    <div className="flex items-center justify-between mb-4">
+                        <h2 className="font-semibold">Total</h2>
+                        <p className="font-bold">€{total.toFixed(2)}</p>
+                    </div>
+
+                    <Link
+                        to="/checkout"
+                        className="block w-full text-center bg-blue-200 text-black py-3 rounded-lg hover:bg-gray-200 transition"
+                    >
+                        Go to Checkout
+                    </Link>
+
                 </div>
 
-                <Link
-                    to="/checkout"
-                    className="block w-full text-center bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition"
-                >
-                    Go to Checkout
-                </Link>
             </div>
         </div>
     );

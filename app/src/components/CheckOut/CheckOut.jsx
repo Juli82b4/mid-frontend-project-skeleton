@@ -11,16 +11,15 @@ export default function CheckOut() {
   const [loading, setLoading] = useState(false);
 
   if (!user) {
+
     return (
       <div className="max-w-xl mx-auto px-4 py-12 text-center">
         <p className="text-gray-600 mb-4">
           You must be logged in to checkout.
         </p>
 
-        <Link
-          to="/login"
-          className="inline-block bg-black text-white px-5 py-2 rounded-lg"
-        >
+        <Link to="/login"
+          className="inline-block bg-black text-white px-5 py-2 rounded-lg">
           Go to Login
         </Link>
       </div>
@@ -88,7 +87,7 @@ export default function CheckOut() {
           {cart.map((item) => (
             <div
               key={item.id}
-              className="bg-white border rounded-xl p-4 flex justify-between items-center"
+              className="bg-blue-100 border rounded-xl p-4 flex justify-between items-center"
             >
               <div>
                 <p className="font-medium text-gray-900">
@@ -100,16 +99,16 @@ export default function CheckOut() {
                 </p>
               </div>
 
-              <p className="font-semibold">
+              <p className="font-semibold text-slate-900">
                 €{(item.price * item.quantity).toFixed(2)}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="bg-white border rounded-xl p-5 h-fit sticky top-20">
+        <div className="bg-blue-100 border rounded-xl p-5 h-fit sticky top-20">
 
-          <h2 className="text-lg font-semibold mb-4">
+          <h2 className="text-slate-900 font-bold mb-4">
             Order Summary
           </h2>
 
@@ -131,8 +130,8 @@ export default function CheckOut() {
           </div>
 
           <div className="border-t pt-3 flex justify-between mb-4">
-            <span className="font-semibold">Total</span>
-            <span className="font-bold text-lg">
+            <span className="font-semibold text-slate-500">Total</span>
+            <span className="font-bold text-lg  text-slate-500">
               €{total.toFixed(2)}
             </span>
           </div>
