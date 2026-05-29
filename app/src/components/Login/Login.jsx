@@ -1,11 +1,6 @@
-// TODO: build a login form with relevant fields
-// TODO: call login(email, password) from useAuth() on submit
-// TODO: show a clear error message if login fails
-// TODO: redirect to the event list on success
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
-import styles from "./Login.module.css"
 
 export default function Login() {
   const { login } = useAuth();
@@ -24,31 +19,34 @@ export default function Login() {
       setError(null);
 
       await login(email, password);
-
-      navigate("/");
+      navigate("/events");
     } catch (err) {
-      setError(err.message);
+      setError(err.message || "Login failed");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className={styles.wrapper}>
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
+    <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">
+
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md bg-slate-900 border border-slate-800 p-8 rounded-xl"
+      >
+        <h1 className="text-2xl font-bold text-white text-center mb-6">
+          Login
+        </h1>
 
         <input
-          className={styles.input}
-          placeholder="Email"
+          className="w-full mb-3 px-4 py-2 rounded bg-slate-950 border border-slate-800 text-white placeholder-gray-500 focus:outline-none"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
-          className={styles.input}
-          placeholder="Email"
+          className="w-full mb-4 px-4 py-2 rounded bg-slate-950 border border-slate-800 text-white placeholder-gray-500 focus:outline-none"
           placeholder="Password"
           type="password"
           value={password}
@@ -56,13 +54,20 @@ export default function Login() {
         />
 
         <button
-          className={styles.button}
-          disabled={loading}>
+          type="submit"
+          disabled={loading}
+          className="w-full bg-white text-black py-2 rounded hover:bg-gray-200 transition disabled:opacity-50"
+        >
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        {error && <p className={styles.error}>{error}</p>}
+        {error && (
+          <p className="text-red-400 text-sm mt-3 text-center">
+            {error}
+          </p>
+        )}
       </form>
+
     </div>
-  )
+  );
 }
