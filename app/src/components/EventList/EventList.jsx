@@ -19,7 +19,7 @@ export default function EventList() {
         setError(null);
 
         const res = await fetch(
-          `http://localhost:3001/api/events?_page=${page}&_limit=${limit}`
+          `${import.meta.env.VITE_API_URL}/api/events?_page=${page}&_limit=${limit}`
         );
 
         if (!res.ok) throw new Error("Failed to load events");
