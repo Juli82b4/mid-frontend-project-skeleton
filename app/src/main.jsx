@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "./components/Layout/Layout.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
+import About from "./components/HomePage/About.jsx";
 import EventList from "./components/EventList/EventList.jsx";
 import EventDetail from "./components/EventList/EventDetail.jsx";
 import Cart from "./components/EventList/Cart.jsx";
@@ -28,11 +29,11 @@ const router = createBrowserRouter([
       { path: "cart", element: <Cart /> },
       { path: "checkout", element: <CheckOut /> },
       { path: "orders", element: <Orders /> },
+      { path: "about", element: <About /> },
     ]
   },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
-  { path: "checkout", element: <CheckOut /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
