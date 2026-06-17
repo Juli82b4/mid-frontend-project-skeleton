@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @layer base {
-    .font-logo {
-        font-family: "Dancing Script", cursive;
-    }
+  .font-logo {
+    font-family: "Dancing Script", cursive;
+  }
 }

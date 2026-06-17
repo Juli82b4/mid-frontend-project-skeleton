@@ -29,7 +29,6 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">
-
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-slate-900 border border-slate-800 p-8 rounded-xl"
@@ -62,12 +61,9 @@ export default function Login() {
         </button>
 
         {error && (
-          <p className="text-red-400 text-sm mt-3 text-center">
-            {error}
-          </p>
+          <p className="text-red-400 text-sm mt-3 text-center">{error}</p>
         )}
       </form>
-
     </div>
   );
 }

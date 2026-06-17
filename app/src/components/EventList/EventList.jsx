@@ -19,7 +19,7 @@ export default function EventList() {
         setError(null);
 
         const res = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/events?_page=${page}&_limit=${limit}`
+          `${import.meta.env.VITE_API_URL}/api/events?_page=${page}&_limit=${limit}`,
         );
 
         if (!res.ok) throw new Error("Failed to load events");
@@ -54,26 +54,17 @@ export default function EventList() {
 
   if (loading) {
     return (
-      <div className="text-center py-10 text-gray-400">
-        Loading events...
-      </div>
+      <div className="text-center py-10 text-gray-400">Loading events...</div>
     );
   }
 
   if (error) {
-    return (
-      <div className="text-center py-10 text-red-400">
-        {error}
-      </div>
-    );
+    return <div className="text-center py-10 text-red-400">{error}</div>;
   }
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
-
-
       <div className="bg-slate-900 border border-slate-800 rounded-lg p-4 mb-6 flex flex-col md:flex-row gap-3 md:items-center justify-between">
-
         <input
           className="w-full md:w-1/2 px-4 py-2 rounded bg-slate-950 border border-slate-800 text-white placeholder-gray-500 focus:outline-none"
           placeholder="Search events..."
@@ -92,11 +83,8 @@ export default function EventList() {
         </select>
       </div>
 
-
       {filteredEvents.length === 0 ? (
-        <div className="text-center text-gray-400 py-10">
-          No events found
-        </div>
+        <div className="text-center text-gray-400 py-10">No events found</div>
       ) : (
         <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {filteredEvents.map((event) => (
@@ -105,9 +93,7 @@ export default function EventList() {
         </ul>
       )}
 
-
       <div className="flex items-center justify-center gap-4 mt-8 text-sm">
-
         <button
           onClick={() => setPage((p) => Math.max(p - 1, 1))}
           disabled={page === 1}
@@ -116,9 +102,7 @@ export default function EventList() {
           Prev
         </button>
 
-        <span className="text-gray-400">
-          Page {page}
-        </span>
+        <span className="text-gray-400">Page {page}</span>
 
         <button
           onClick={() => setPage((p) => p + 1)}
@@ -127,7 +111,6 @@ export default function EventList() {
           Next
         </button>
       </div>
-
     </div>
   );
 }

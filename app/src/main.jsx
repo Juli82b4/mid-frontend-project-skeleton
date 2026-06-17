@@ -11,7 +11,7 @@ import Cart from "./components/EventList/Cart.jsx";
 import Login from "./components/Login/Login.jsx";
 import Register from "./components/Register/Register.jsx";
 import Orders from "./components/Orders/Orders.jsx";
-import CheckOut from "./components/CheckOut/CheckOut.jsx"
+import CheckOut from "./components/CheckOut/CheckOut.jsx";
 
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext";
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       { path: "checkout", element: <CheckOut /> },
       { path: "orders", element: <Orders /> },
       { path: "about", element: <About /> },
-    ]
+    ],
   },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
@@ -43,5 +43,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <RouterProvider router={router} />
       </AuthProvider>
     </CartProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

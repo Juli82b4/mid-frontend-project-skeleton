@@ -16,8 +16,7 @@ export default function CheckOut() {
     setLoading(true);
 
     setTimeout(() => {
-      const existingOrders =
-        JSON.parse(localStorage.getItem("orders")) || [];
+      const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
 
       const newOrder = {
         id: Date.now(),
@@ -28,7 +27,7 @@ export default function CheckOut() {
 
       localStorage.setItem(
         "orders",
-        JSON.stringify([...existingOrders, newOrder])
+        JSON.stringify([...existingOrders, newOrder]),
       );
 
       clearCart();
@@ -39,7 +38,6 @@ export default function CheckOut() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
-
       {isLoggedOut && (
         <div className="max-w-xl mx-auto px-4 py-12 text-center">
           <p className="text-gray-600 mb-4">
@@ -94,9 +92,7 @@ export default function CheckOut() {
             </div>
 
             <div className="bg-blue-100 border rounded-xl p-5 h-fit sticky top-20">
-              <h2 className="text-slate-900 font-bold mb-4">
-                Order Summary
-              </h2>
+              <h2 className="text-slate-900 font-bold mb-4">Order Summary</h2>
 
               <div className="space-y-2 text-sm text-gray-600 mb-4">
                 <div className="flex justify-between">

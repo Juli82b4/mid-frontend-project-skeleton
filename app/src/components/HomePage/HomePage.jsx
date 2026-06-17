@@ -3,7 +3,6 @@ import bannerImage from "../../assets/banner.webp";
 function HomePage() {
   return (
     <div className="w-full">
-
       <div className="relative w-full h-[300px] md:h-[420px] overflow-hidden rounded-xl">
         <img
           src={bannerImage}
@@ -21,7 +20,6 @@ function HomePage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-12 text-center">
-
         <h2 className="text-2xl md:text-3xl font-semibold text-gray-500">
           Welcome to EventHub
         </h2>

@@ -11,17 +11,10 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-white">
-
       <header className="bg-slate-900 border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-
-          <Link
-            to="/"
-            className="flex items-center gap-2 font-bold text-lg"
-          >
-            <span className="font-logo text-2xl">
-              EventHub
-            </span>
+          <Link to="/" className="flex items-center gap-2 font-bold text-lg">
+            <span className="font-logo text-2xl">EventHub</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
@@ -39,7 +32,6 @@ export default function Layout() {
           </nav>
 
           <div className="flex items-center gap-4">
-
             <Link
               to="/cart"
               className="relative flex items-center gap-2 text-gray-700 hover:text-white"
@@ -101,7 +93,6 @@ export default function Layout() {
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-6">
         <Outlet />
       </main>
-
 
       <footer className="border-t text-center py-4 text-xs text-gray-500 bg-slate-900 border-b border-slate-800">
         © {new Date().getFullYear()} EventHub — Buy tickets, experience life

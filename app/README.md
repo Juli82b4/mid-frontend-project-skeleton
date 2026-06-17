@@ -67,16 +67,16 @@ The API server restarts automatically when you edit `api/db.json`.
 
 ### Endpoints
 
-| Method | Route | Auth required | Description |
-|--------|-------|---------------|-------------|
-| POST | `/register` | No | Create an account `{ email, password }` |
-| POST | `/login` | No | Sign in → returns `{ accessToken, user }` |
-| GET | `/events` | No | List all events |
-| GET | `/events/:id` | No | Get a single event |
-| GET | `/orders` | Yes | List your own orders |
-| POST | `/orders` | Yes | Place an order |
-| PATCH | `/orders/:id` | Yes | Update your order |
-| DELETE | `/orders/:id` | Yes | Delete your order |
+| Method | Route         | Auth required | Description                               |
+| ------ | ------------- | ------------- | ----------------------------------------- |
+| POST   | `/register`   | No            | Create an account `{ email, password }`   |
+| POST   | `/login`      | No            | Sign in → returns `{ accessToken, user }` |
+| GET    | `/events`     | No            | List all events                           |
+| GET    | `/events/:id` | No            | Get a single event                        |
+| GET    | `/orders`     | Yes           | List your own orders                      |
+| POST   | `/orders`     | Yes           | Place an order                            |
+| PATCH  | `/orders/:id` | Yes           | Update your order                         |
+| DELETE | `/orders/:id` | Yes           | Delete your order                         |
 
 For protected routes, include the token from `/login` as a header:
 
@@ -124,13 +124,13 @@ const { user, token, login, register, logout } = useAuth();
 
 ### What each value gives you
 
-| Value | Type | Description |
-|---|---|---|
-| `user` | object \| null | The logged-in user `{ id, email }`, or `null` if not logged in |
-| `token` | string \| null | The JWT access token, or `null` if not logged in |
-| `login(email, password)` | async function | Signs in — throws an `Error` if credentials are wrong |
+| Value                       | Type           | Description                                                    |
+| --------------------------- | -------------- | -------------------------------------------------------------- |
+| `user`                      | object \| null | The logged-in user `{ id, email }`, or `null` if not logged in |
+| `token`                     | string \| null | The JWT access token, or `null` if not logged in               |
+| `login(email, password)`    | async function | Signs in — throws an `Error` if credentials are wrong          |
 | `register(email, password)` | async function | Creates an account and signs in — throws an `Error` on failure |
-| `logout()` | function | Clears the session from state and localStorage |
+| `logout()`                  | function       | Clears the session from state and localStorage                 |
 
 ### Making authenticated API calls
 

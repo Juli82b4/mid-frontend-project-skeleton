@@ -26,9 +26,7 @@ export default function Orders() {
   if (orders.length === 0) {
     return (
       <div className="max-w-xl mx-auto px-4 py-12 text-center">
-        <h2 className="text-xl font-semibold mb-2">
-          No orders yet
-        </h2>
+        <h2 className="text-xl font-semibold mb-2">No orders yet</h2>
 
         <p className="text-gray-500 mb-6">
           Once you book events, they will appear here.
@@ -46,32 +44,20 @@ export default function Orders() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-
-      <h1 className="text-2xl font-bold mb-6">
-        Your Orders
-      </h1>
+      <h1 className="text-2xl font-bold mb-6">Your Orders</h1>
 
       <div className="space-y-4">
-
         {orders.map((order) => (
-          <div
-            key={order.id}
-            className="border rounded-xl bg-blue-200 p-5"
-          >
-
+          <div key={order.id} className="border rounded-xl bg-blue-200 p-5">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
               <p className="text-sm text-gray-500">
                 Order ID:{" "}
-                <span className="text-gray-900 font-medium">
-                  {order.id}
-                </span>
+                <span className="text-gray-900 font-medium">{order.id}</span>
               </p>
 
               <p className="text-sm text-gray-500">
                 Date:{" "}
-                <span className="text-gray-900 font-medium">
-                  {order.date}
-                </span>
+                <span className="text-gray-900 font-medium">{order.date}</span>
               </p>
             </div>
 
@@ -85,18 +71,14 @@ export default function Orders() {
                     {item.name} × {item.quantity}
                   </span>
 
-                  <span>
-                    €{(item.price * item.quantity).toFixed(2)}
-                  </span>
+                  <span>€{(item.price * item.quantity).toFixed(2)}</span>
                 </div>
               ))}
             </div>
 
             <div className="flex justify-between border-t pt-3">
               <span className="font-semibold  text-slate-900">Total</span>
-              <span className="font-bold text-slate-900">
-                €{order.total}
-              </span>
+              <span className="font-bold text-slate-900">€{order.total}</span>
             </div>
           </div>
         ))}
